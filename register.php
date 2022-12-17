@@ -1,5 +1,19 @@
 <?php
 
+include('includes/classes/Account.php');
+include('includes/classes/Constants.php');
+
+$account = new Account();
+
+include('includes/handlers/register-handler.php');
+
+function getPreviousValue($field)
+{
+    if (isset($_POST[$field])) {
+        echo $_POST[$field];
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -14,21 +28,29 @@
 
     <script src="includes/scripts/utilities.js"></script>
 
-    <div id="input-container">
-        <form id="register-form" action="register.php" method="POST">
+    <div id="input_container">
+        <form id="register_form" action="register.php" method="POST">
+            <h2>Register a new account</h2>
             <p>
+                <?php echo $account->getError(Constants::$emailAlreadyExists); ?>
+                <?php echo $account->getError(Constants::$emailInvalid); ?>
+                <?php echo $account->getError(Constants::$emailLength); ?>
                 <label>Email:
-                    <input id="submitted-email" name="submitted-email" type="email" autocomplete="email" inputmode="email" required />
+                    <input id="submitted_email" name="submittedEmail" type="email" autocomplete="email"
+                        inputmode="email" value='<?php getPreviousValue('submittedEmail'); ?>' required />
                 </label>
             </p>
             <p>
+                <?php echo $account->getError(Constants::$passwordInvalid); ?>
+                <?php echo $account->getError(Constants::$passwordLength); ?>
                 <label>Password:
-                    <input id="submitted-password" name="submitted-password" type="password" autocomplete="new-password"
+                    <input id="submitted_password" name="submittedPassword" type="password" autocomplete="new-password"
                         required />
                     <input type="checkbox" onclick="passwordReveal()">Show Password
+                    <!-- TODO: Change text between show and hide. -->
                 </label>
             </p>
-            <button type="submit" name="register-button">Register</button>
+            <button type="submit" name="registerButton">Register</button>
         </form>
     </div>
 

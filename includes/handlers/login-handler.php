@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['login-button'])) {
+if (isset($_POST['loginButton'])) {
     
 }
 
