@@ -1,9 +1,11 @@
 <?php
 
+include("includes/config.php");
+
 include('includes/classes/Account.php');
 include('includes/classes/Constants.php');
 
-$account = new Account();
+$account = new Account($connection);
 
 include('includes/handlers/register-handler.php');
 
@@ -46,7 +48,7 @@ function getPreviousValue($field)
                 <label>Password:
                     <input id="submitted_password" name="submittedPassword" type="password" autocomplete="new-password"
                         required />
-                    <input type="checkbox" onclick="passwordReveal()">Show Password
+                    <input type="checkbox" onclick="passwordReveal('submitted_password')">Show Password
                     <!-- TODO: Change text between show and hide. -->
                 </label>
             </p>

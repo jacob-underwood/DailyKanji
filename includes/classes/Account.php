@@ -4,10 +4,12 @@ use Vtiful\Kernel\Format;
 class Account
 {
 
+    private $connection;
     private $errorArray;
 
-    public function __construct()
+    public function __construct($connection)
     {
+        $this->connection = $connection;
         $this->errorArray = array();
     }
 
@@ -27,6 +29,14 @@ class Account
         } else {
             return false;
         }
+    }
+
+    private function insertIntoDatabase($email, $password)
+    {
+        $encryptedPassword = md5($password);
+        $today = date();
+
+        $result = mysqli_query($this->connection, "INSERT INTO users (id, email, password, dateJoined, profilePicture) VALUES ('', '$email', '$password');");
     }
 
     /**
