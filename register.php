@@ -12,13 +12,13 @@
 
 <body>
 
-    <script src="includes/JavaScript/utilities.js"></script>
+    <script src="includes/scripts/utilities.js"></script>
 
-    <div id="inputContainer">
-        <form action="" method="POST">
+    <div id="input-container">
+        <form id="register-form" action="register.php" method="POST">
             <p>
                 <label>Email:
-                    <input name="submitted-email" type="email" autocomplete="email" inputmode="email" required />
+                    <input id="submitted-email" name="submitted-email" type="email" autocomplete="email" inputmode="email" required />
                 </label>
             </p>
             <p>
@@ -28,7 +28,7 @@
                     <input type="checkbox" onclick="passwordReveal()">Show Password
                 </label>
             </p>
-            <button>Register</button>
+            <button type="submit" name="register-button">Register</button>
         </form>
     </div>
 

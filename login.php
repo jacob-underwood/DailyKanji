@@ -11,11 +11,11 @@
 </head>
 
 <body>
-    <div id="inputContainer">
-        <form action="" method="POST">
+    <div id="input-container">
+        <form id="login-form" action="login.php" method="POST">
             <p>
                 <label>Email:
-                    <input name="submitted-email" type="email" autocomplete="email" inputmode="email" />
+                    <input id="submitted-email" name="submitted-email" type="email" autocomplete="email" inputmode="email" required />
                 </label>
             </p>
             <p>
@@ -23,6 +23,7 @@
                     <input name="submitted-password" type="password" autocomplete="current-password" required />
                 </label>
             </p>
+            <button type="submit" name="login-button">Sign in</button>
         </form>
     </div>
 </body>
