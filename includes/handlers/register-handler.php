@@ -23,6 +23,7 @@ if (isset($_POST['registerButton'])) {
     $successfulRegister = $account->register($sanitizedEmail, $sanitizedPassword);
 
     if ($successfulRegister) {
+        $_SESSION['loggedInUserEmail'] = $sanitizedEmail;
         header("Location: index.php");
     }
 

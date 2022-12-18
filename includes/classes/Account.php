@@ -13,17 +13,17 @@ class Account
         $this->errorArray = array();
     }
 
-    public function loginAttempt($email, $password)
+    public function login($email, $password)
     {
         $encryptedPassword = md5($password);
 
-        $checkUserQuery = mysqli_query($this->connection, "SELECT * FROM users WHERE email = '$email' AND password = '$encryptedPassword';");
+        $checkUserQuery = mysqli_query($this->connection, "SELECT email FROM users WHERE email = '$email' AND password = '$encryptedPassword';");
 
         if (mysqli_num_rows($checkUserQuery)) {
             return true;
         } else {
             array_push($this->errorArray, Constants::$loginUnsuccessful);
-
+            return false;
         }
     }
 

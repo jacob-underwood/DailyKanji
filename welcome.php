@@ -1,6 +1,12 @@
 <?php
 
+include("includes/config.php");
+
 include("includes/handlers/welcome-handler.php");
+
+if (isset($_SESSION['loggedInUserEmail'])) {
+    header("Location: index.php");
+}
 
 ?>
 

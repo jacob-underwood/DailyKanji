@@ -1,3 +1,15 @@
+<?php
+
+include("includes/config.php");
+
+if (isset($_SESSION['loggedInUserEmail'])) {
+    $userLoggedIn = $_SESSION['loggedInUserEmail'];
+} else {
+    header("Location: welcome.php");
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">

@@ -11,6 +11,10 @@ include('includes/handlers/register-handler.php');
 
 include('includes/utilities.php');
 
+if (isset($_SESSION['loggedInUserEmail'])) {
+    header("Location: index.php");
+}
+
 ?>
 
 <!DOCTYPE html>

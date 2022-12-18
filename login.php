@@ -11,6 +11,10 @@ include('includes/handlers/login-handler.php');
 
 include('includes/utilities.php');
 
+if (isset($_SESSION['loggedInUserEmail'])) {
+    header("Location: index.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,9 +30,9 @@ include('includes/utilities.php');
         <form id="login_form" action="login.php" method="POST">
             <h2>Login to your account</h2>
             <p>
-                <?php  ?>
+                <?php echo $account->getError(Constants::$loginUnsuccessful); ?>
                 <label>Email:
-                    <input id="submitted_email" name="submittedEmail" type="email" autocomplete="email" inputmode="email" value="<?php getPreviousValue($submittedEmail) ?>" required />
+                    <input id="submitted_email" name="submittedEmail" type="email" autocomplete="email" inputmode="email" value="<?php getPreviousValue('submittedEmail'); ?>" required />
                 </label>
             </p>
             <p>
