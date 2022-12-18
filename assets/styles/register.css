@@ -1,0 +1,14 @@
+head, body {
+    margin: 0;
+    padding: 0;
+}
+
+#register_background {
+    background-color: #fff;
+    /* background-image: url(../images/register-background.jpeg); */
+    background-position: center;
+    background-size: cover;
+    display: table;
+    height: 100%;
+    width: 100%;
+}
