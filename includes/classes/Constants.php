@@ -9,6 +9,8 @@ class Constants
     public static $passwordLength = "Your password is not within the length requirements.";
     public static $passwordInvalid = "Your password has invalid characters.";
 
+    public static $loginUnsuccessful = "Your email or password was incorrect.";
+
 }
 
 ?>

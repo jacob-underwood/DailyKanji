@@ -13,6 +13,20 @@ class Account
         $this->errorArray = array();
     }
 
+    public function loginAttempt($email, $password)
+    {
+        $encryptedPassword = md5($password);
+
+        $checkUserQuery = mysqli_query($this->connection, "SELECT * FROM users WHERE email = '$email' AND password = '$encryptedPassword';");
+
+        if (mysqli_num_rows($checkUserQuery)) {
+            return true;
+        } else {
+            array_push($this->errorArray, Constants::$loginUnsuccessful);
+
+        }
+    }
+
     /**
      * Puts user data into database after validating information.
      * @param string $email
@@ -25,18 +39,27 @@ class Account
         $this->validatePassword($password);
 
         if (empty($this->errorArray)) {
-            return true;
+            return $this->insertIntoDatabase($email, $password);
         } else {
             return false;
         }
     }
 
+    /**
+     * Inserts email and password into users database, along with their date of joining and a default profile picture.
+     * Encrypts password using md5.
+     * @param string $email
+     * @param string $password
+     * @return bool|mysqli_result True if successful insert.
+     */
     private function insertIntoDatabase($email, $password)
     {
         $encryptedPassword = md5($password);
-        $today = date();
+        $today = date('Y-m-d');
 
-        $result = mysqli_query($this->connection, "INSERT INTO users (id, email, password, dateJoined, profilePicture) VALUES ('', '$email', '$password');");
+        $successfulUserQuery = mysqli_query($this->connection, "INSERT INTO users (id, email, password, dateJoined, profilePicture) VALUES ('', '$email', '$encryptedPassword', '$today', 'assets/images/default-profile-picture.jpeg');");
+
+        return $successfulUserQuery;
     }
 
     /**
@@ -64,7 +87,7 @@ class Account
     private function validateEmail($email)
     {
 
-        if (strlen($email) > 50 || strlen($email) < 5) {
+        if (strlen($email) > 100 || strlen($email) < 5) {
             array_push($this->errorArray, Constants::$emailLength);
             return;
         }
@@ -74,7 +97,13 @@ class Account
             return;
         }
 
-        // TODO: Check if email already exists.
+        // Check if email already exists in users table.
+        $checkEmailQuery = mysqli_query($this->connection, "SELECT email FROM users WHERE email = '$email';");
+
+        if (mysqli_num_rows($checkEmailQuery)) {
+            array_push($this->errorArray, Constants::$emailAlreadyExists);
+            return;
+        }
 
     }
 

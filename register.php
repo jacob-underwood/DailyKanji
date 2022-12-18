@@ -9,12 +9,7 @@ $account = new Account($connection);
 
 include('includes/handlers/register-handler.php');
 
-function getPreviousValue($field)
-{
-    if (isset($_POST[$field])) {
-        echo $_POST[$field];
-    }
-}
+include('includes/utilities.php');
 
 ?>
 
@@ -39,7 +34,7 @@ function getPreviousValue($field)
                 <?php echo $account->getError(Constants::$emailLength); ?>
                 <label>Email:
                     <input id="submitted_email" name="submittedEmail" type="email" autocomplete="email"
-                        inputmode="email" value='<?php getPreviousValue('submittedEmail'); ?>' required />
+                        inputmode="email" value="<?php getPreviousValue('submittedEmail'); ?>" required />
                 </label>
             </p>
             <p>

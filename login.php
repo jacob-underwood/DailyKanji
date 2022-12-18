@@ -1,5 +1,16 @@
 <?php
 
+include("includes/config.php");
+
+include('includes/classes/Account.php');
+include('includes/classes/Constants.php');
+
+$account = new Account($connection);
+
+include('includes/handlers/login-handler.php');
+
+include('includes/utilities.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -13,9 +24,11 @@
 <body>
     <div id="input_container">
         <form id="login_form" action="login.php" method="POST">
+            <h2>Login to your account</h2>
             <p>
+                <?php  ?>
                 <label>Email:
-                    <input id="submitted_email" name="submittedEmail" type="email" autocomplete="email" inputmode="email" required />
+                    <input id="submitted_email" name="submittedEmail" type="email" autocomplete="email" inputmode="email" value="<?php getPreviousValue($submittedEmail) ?>" required />
                 </label>
             </p>
             <p>
