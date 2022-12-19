@@ -1,14 +1,33 @@
+@font-face {
+    font-family: 'zenmarugothicregular';
+    src: url(../fonts/ZenMaruGothic-Regular.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 head, body {
     margin: 0;
     padding: 0;
 }
 
-#register_background {
-    background-color: #fff;
-    /* background-image: url(../images/register-background.jpeg); */
+#register_popup {
+    display: none;
+    border: gray;
+    border-width: thin;
+    border-style: solid;
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 15%;
+    top: 13%;
+    right: 15%;
+    bottom: 40%;
+    background-image: url(../images/register-background.jpeg);
     background-position: center;
     background-size: cover;
-    display: table;
-    height: 100%;
-    width: 100%;
+}
+
+#input_container {
+    font-family: zenmarugothicregular;
+    text-align: center;
 }

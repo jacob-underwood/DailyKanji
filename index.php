@@ -26,6 +26,7 @@ include('includes/utilities.php');
     <link rel="stylesheet" type="text/css" href="assets/styles/register.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="assets/scripts/register.js"></script>
 
 </head>
 
@@ -33,7 +34,7 @@ include('includes/utilities.php');
 
     <script src="assets/scripts/utilities.js"></script>
 
-    <h1>DailyKanji</h1>
+    <h1 id="form_button">DailyKanji</h1>
 
     <div id="register_popup">
         <div id="input_container">
