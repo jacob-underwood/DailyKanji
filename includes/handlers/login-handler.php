@@ -9,7 +9,8 @@ if (isset($_POST['loginButton'])) {
 
     if ($successfulLogin) {
         $_SESSION['loggedInUserEmail'] = $email;
-        header('Location: index.php');
+        $_SESSION['loginMethod'] = 'login';
+        // header('Location: index.php');
     }
 
 }
