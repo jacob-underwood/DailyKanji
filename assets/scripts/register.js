@@ -1,8 +1,18 @@
 $(document).ready(
     function() {
-        $("#form_button").click(
+        $("#open_register").click(
             function() {
                 $("#register_popup").show();
+                $("#register_form").show();
+                $("#login_form").hide();
+            }
+        );
+
+        $("#open_login").click(
+            function() {
+                $("#register_popup").show();
+                $("#register_form").hide();
+                $("#login_form").show();
             }
         );
     }

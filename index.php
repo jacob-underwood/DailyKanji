@@ -34,7 +34,10 @@ include('includes/utilities.php');
 
     <script src="assets/scripts/utilities.js"></script>
 
-    <h1 id="form_button">DailyKanji</h1>
+    <h1>DailyKanji</h1>
+
+    <h2 id="open_register">Open Register</h2>
+    <h2 id="open_login">Open Log In</h2>
 
     <div id="register_popup">
         <div id="input_container">
@@ -50,7 +53,7 @@ include('includes/utilities.php');
                                 inputmode="email" value="<?php getPreviousValue('submittedEmail'); ?>" required />
                         </label>
                     </p>
-                    <p>
+                    <p id="register_password_line">
                         <?php echo $account->getError(Constants::$passwordInvalid); ?>
                         <?php echo $account->getError(Constants::$passwordLength); ?>
                         <label>Password:
@@ -74,7 +77,7 @@ include('includes/utilities.php');
                                 inputmode="email" value="<?php getPreviousValue('submittedEmail'); ?>" required />
                         </label>
                     </p>
-                    <p>
+                    <p id="login_password_line">
                         <label>Password:
                             <input id="submitted_login_password" name="submittedPassword" type="password"
                                 autocomplete="current-password" required />
