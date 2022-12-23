@@ -124,3 +124,10 @@ p {
     text-align: center;
     color: #ccc;
 }
+
+.error-message {
+    display: block;
+    color: #ff0000;
+    font-weight: bold;
+    margin-bottom: 1%;
+}

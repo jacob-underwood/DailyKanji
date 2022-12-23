@@ -2,8 +2,6 @@
 
 include("includes/config.php");
 
-session_abort();
-
 include('includes/classes/Account.php');
 include('includes/classes/Constants.php');
 
@@ -32,35 +30,71 @@ include('includes/utilities.php');
 
 </head>
 
-<body>
+<body style="background-image: url('<?php getRandomImage('assets/images/watercolor/') ?>');">
 
     <?php
 
     if (isset($_SESSION['loggedInUserEmail'])) {
-        if ($_SESSION['loginMethod'] == 'register') {
+        echo $_SESSION['loggedInUserEmail'];
+        if (isset($_POST['registerButton'])) {
             echo '<script>
                     $(document).ready(
                         function () {
+                            $("#register_popup").show();
                             $("#input_container").hide();
                             $("#register_greeting").show();
                         }
                     );
                 </script>';
-        } else if ($_SESSION['loginMethod'] == 'login') {
+            // $_SESSION['loginMethod'] = null;
+        } else if (isset($_POST['loginButton'])) {
             echo '<script>
                     $(document).ready(
                         function () {
+                            $("#register_popup").show();
                             $("#input_container").hide();
                             $("#login_greeting").show();
                         }
                     );
                 </script>';
+            // $_SESSION['loginMethod'] = null;
+        }
+    } else {
+        if (isset($_POST['registerButton'])) {
+            echo '<script>
+                    $(document).ready(
+                        function () {
+                            $("#register_popup").show();
+                            $("#input_container").show();
+                            $("#register_form").show();
+                            $("#login_form").hide();
+                        }
+                    );
+                </script>';
+            // $_SESSION['loginMethod'] = null;
+        } else if (isset($_POST['loginButton'])) {
+            echo '<script>
+                    $(document).ready(
+                        function () {
+                            $("#register_popup").show();
+                            $("#input_container").show();
+                            $("#login_form").show();
+                            $("#register_form").hide();
+                        }
+                    );
+                </script>';
+            // $_SESSION['loginMethod'] = null;
         }
     }
+
+    // echo implode(",", glob('assets/images/watercolor/' . '*.{jpg,jpeg,png}', GLOB_BRACE));
 
     ?>
 
     <script src="assets/scripts/utilities.js"></script>
+
+    <!-- <img src="<?php // getRandomImage('assets/images/watercolor/') ?>" alt="background" width="500" height="600"> -->
+    <!--TODO: Change alt text.-->
 
     <h1>DailyKanji</h1>
 

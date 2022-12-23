@@ -24,7 +24,7 @@ if (isset($_POST['registerButton'])) {
 
     if ($successfulRegister) {
         $_SESSION['loggedInUserEmail'] = $sanitizedEmail;
-        $_SESSION['loginMethod'] = 'register';
+        // $_SESSION['loginMethod'] = 'register';
         // header("Location: index.php");
     }
 
